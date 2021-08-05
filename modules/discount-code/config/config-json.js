@@ -22,15 +22,15 @@ module.exports = function configJSON(req) {
             discount: "{{Event.APIEvent-8b05671a-3b6d-3d20-9917-4486c4b0c9b9.discountCode}}"
           }
         ],
-        outArguments: [],
-        // outArguments: [{
-        //   "discount": "Number",
-        //   "discountCode": "Text"
-        // }],
+        // outArguments: [],
+        outArguments: [{
+          "discount": "Number",
+          "discountCode": "Text"
+        }],
         // Fill in the host with the host that this is running on.
         // It must run under HTTPS
-        url: `https://en1w0gyewmz47.x.pipedream.net/`,
-        //url: `https://${req.headers.host}/modules/discount-code/execute`,
+        //url: `https://en1w0gyewmz47.x.pipedream.net/`,
+        url: `https://${req.headers.host}/modules/discount-code/execute`,
         // The amount of time we want Journey Builder to wait before cancel the request. Default is 60000, Minimal is 1000
         timeout: 10000,
         // how many retrys if the request failed with 5xx error or network error. default is 0
@@ -68,19 +68,19 @@ module.exports = function configJSON(req) {
               direction: 'in',
               access: 'visible'
             }
+          }],
+          outArguments: [{
+            discountCode: {
+              dataType: 'Text',
+              direction: 'out',
+              access: 'visible'
+            },
+            discount: {
+              dataType: 'Number',
+              direction: 'out',
+              access: 'visible'
+            }
           }]
-          // outArguments: [{
-          //   discountCode: {
-          //     dataType: 'Text',
-          //     direction: 'out',
-          //     access: 'visible'
-          //   },
-          //   discount: {
-          //     dataType: 'Number',
-          //     direction: 'out',
-          //     access: 'visible'
-          //   }
-          // }]
         }
       }
     }

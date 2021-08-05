@@ -19,13 +19,17 @@ module.exports = function configJSON(req) {
         // See: https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/how-data-binding-works.htm
         inArguments: [
           {
-            discount: 10
+            discount: "{{Event.APIEvent-03e7cd31-c92a-9144-6f34-70e628880d7b.discount}}"
           }
         ],
-        outArguments: [],
+        outArguments: [{
+          "discount": "Number",
+          "discountCode": "Text"
+        }],
         // Fill in the host with the host that this is running on.
         // It must run under HTTPS
-        url: `https://${req.headers.host}/modules/discount-code/execute`,
+        //url: `https://en1w0gyewmz47.x.pipedream.net/`,
+        //url: `https://${req.headers.host}/modules/discount-code/execute`,
         // The amount of time we want Journey Builder to wait before cancel the request. Default is 60000, Minimal is 1000
         timeout: 10000,
         // how many retrys if the request failed with 5xx error or network error. default is 0
@@ -57,7 +61,13 @@ module.exports = function configJSON(req) {
     schema: {
       arguments: {
         execute: {
-          inArguments: [],
+          inArguments: [{
+            discount: {
+              dataType: 'Number',
+              direction: 'in',
+              access: 'visible'
+            }
+          }],
           outArguments: [{
             discountCode: {
               dataType: 'Text',

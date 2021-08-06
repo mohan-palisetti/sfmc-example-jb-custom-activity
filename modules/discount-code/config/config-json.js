@@ -19,7 +19,7 @@ module.exports = function configJSON(req) {
         // See: https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/how-data-binding-works.htm
         inArguments: [
           {
-            discount: "{{Event.APIEvent-8b05671a-3b6d-3d20-9917-4486c4b0c9b9.discount}}"
+            discount: "{{Event.APIEvent-70a8fe58-7386-573e-ba8e-95be65834735.discount}}"
           }
         ],
         outArguments: [],

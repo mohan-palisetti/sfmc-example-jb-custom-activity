@@ -22,11 +22,7 @@ module.exports = function configJSON(req) {
             discount: "{{Event.APIEvent-8b05671a-3b6d-3d20-9917-4486c4b0c9b9.discountCode}}"
           }
         ],
-        // outArguments: [],
-        outArguments: [{
-          "discount": "Number",
-          "discountCode": "Text"
-        }],
+        outArguments: [],
         // Fill in the host with the host that this is running on.
         // It must run under HTTPS
         //url: `https://en1w0gyewmz47.x.pipedream.net/`,
